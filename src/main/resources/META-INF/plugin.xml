@@ -10,10 +10,24 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.viinyard.myideaplugin.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.viinyard.myideaplugin.services.MyProjectService"/>
+        <xdebugger.debuggerSupport implementation="com.github.viinyard.myideaplugin.services.MyDummyService"/>
     </extensions>
 
     <applicationListeners>
         <listener class="com.github.viinyard.myideaplugin.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
+        <listener class="com.github.viinyard.myideaplugin.listeners.MyDummyListener" topic="com.intellij.xdebugger.XDebuggerManagerListener"/>
     </applicationListeners>
+    
+    <actions>
+        <action id="com.github.viinyard.myideaplugin.actions.MyDummyAction"
+                class="com.github.viinyard.myideaplugin.actions.MyDummyAction"
+                text="Mute Breakpoints"
+                icon="AllIcons.Actions.Resume"
+                use-shortcut-of="Resume"
+
+                >
+            <add-to-group group-id="TouchBarDebug"/>
+        </action>
+    </actions>
 </idea-plugin>
